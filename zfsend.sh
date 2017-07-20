@@ -55,7 +55,7 @@ if [ ${ssh} != "yes" ]; then
 			exit
 		else
 			echo "Old snapshot found on the destination, doing incremental copy!"
-			${zfs} send -I -R ${source_dataset_path}${latest_dest_snap} ${latest_source_snap_fpath} | ${zfs} recv ${dest_dataset}
+			${zfs} send -R -I ${source_dataset_path}${latest_dest_snap} ${latest_source_snap_fpath} | ${zfs} recv ${dest_dataset}
 			if [ $? = 0 ]; then
                                 echo "done!"
                         else
